@@ -27,7 +27,6 @@
         "url": "git://github.com/inikulin/parse5.git"
     },
     "files": [
-        "dist/**/*.js",
-        "dist/**/*.d.ts"
+        "dist"
     ]
 }
