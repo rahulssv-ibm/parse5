@@ -25,7 +25,7 @@
         "parse5": "^7.0.0"
     },
     "scripts": {
-        "build:cjs": "tsc --module CommonJS --target ES6 --outDir dist/cjs && echo '{\"type\":\"commonjs\"}' > dist/cjs/package.json"
+        "build:cjs": "tsc --module CommonJS --target ES6 --outDir dist/cjs --sourceRoot https://raw.githubusercontent.com/inikulin/parse5/$(git rev-parse HEAD)/packages/parse5-parser-stream/lib/ && echo '{\"type\":\"commonjs\"}' > dist/cjs/package.json"
     },
     "repository": {
         "type": "git",
