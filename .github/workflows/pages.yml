@@ -1,5 +1,6 @@
 name: Deploy to GitHub Pages
 on:
+    workflow_dispatch:
     push:
         branches:
             - master
@@ -7,12 +8,13 @@ on:
 jobs:
     deploy:
         name: Deploy to GitHub Pages
-        runs-on: ubuntu-latest
+        runs-on: ubuntu-22.04-ppc64le
         steps:
             - uses: actions/checkout@v4.2.1
-            - uses: actions/setup-node@v4.0.4
+            - uses: actions/setup-node@v3
               with:
-                  node-version: lts/*
+                  node-version: 20
+                  architecture: ppc64le
                   cache: npm
             - run: npm ci
             - name: Build docs
