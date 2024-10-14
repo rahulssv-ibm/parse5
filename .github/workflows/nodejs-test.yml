@@ -16,15 +16,16 @@ permissions:
 
 jobs:
     lint:
-        runs-on: ubuntu-latest
+        runs-on: ubuntu-22.04-ppc64le
         steps:
             - uses: actions/checkout@v4.2.1
               with:
                   submodules: recursive
             - name: Use Node.js ${{ matrix.node }}
-              uses: actions/setup-node@v4.0.4
+              uses: actions/setup-node@v3
               with:
-                  node-version: lts/*
+                  node-version: 20
+                  architecture: ppc64le
                   cache: npm
             - run: npm ci
             - run: npm run lint
@@ -35,7 +36,7 @@ jobs:
             checks: write #  to create new checks (coverallsapp/github-action)
 
         name: Node ${{ matrix.node }}
-        runs-on: ubuntu-latest
+        runs-on: ubuntu-22.04-ppc64le
 
         strategy:
             fail-fast: false
@@ -43,16 +44,16 @@ jobs:
                 node:
                     - 18
                     - 20
-                    - lts/*
 
         steps:
             - uses: actions/checkout@v4.2.1
               with:
                   submodules: recursive
             - name: Use Node.js ${{ matrix.node }}
-              uses: actions/setup-node@v4.0.4
+              uses: actions/setup-node@v3
               with:
                   node-version: ${{ matrix.node }}
+                  architecture: ppc64le
                   cache: npm
             - run: npm ci
             - run: npm run build --if-present
