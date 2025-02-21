@@ -13,7 +13,7 @@ permissions:
 
 jobs:
     lint:
-        runs-on: ubuntu-22.04-ppc64le
+        runs-on: ubuntu-24.04-ppc64le
         steps:
             - uses: actions/checkout@v4.2.1
               with:
@@ -33,7 +33,7 @@ jobs:
             checks: write #  to create new checks (coverallsapp/github-action)
 
         name: Node ${{ matrix.node }}
-        runs-on: ubuntu-22.04-ppc64le
+        runs-on: ubuntu-24.04-ppc64le
 
         strategy:
             fail-fast: false
